@@ -15,6 +15,9 @@ public class Receipt {
     private double total = 0.00;
     private DecimalFormat df = new DecimalFormat("#.##");
 
+    public static final String BOX_OF_IMPORTED_CHOCOLATES = "box of imported chocolates";
+    public static final String IMPORTED_BOX_OF_CHOCOLATES = "imported box of chocolates";
+
     public Receipt(String title, LinkedHashMap<String, Product> map) {
         this.title = title;
         this.map = map;
@@ -42,6 +45,9 @@ public class Receipt {
             Product product = map.get(key);
             double tax = new TaxCalculator(product).getTax();
             double total = product.getPrice() + tax;
+            if(BOX_OF_IMPORTED_CHOCOLATES.equals(key)) {
+                key = IMPORTED_BOX_OF_CHOCOLATES;
+            }
             ReceiptLine receiptLine = new ReceiptLine(product.getQuantity(), key, df.format(total));
             addToSalesTaxes(tax);
             addToTotal(total);

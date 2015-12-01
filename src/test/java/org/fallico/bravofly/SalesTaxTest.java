@@ -105,8 +105,8 @@ public class SalesTaxTest {
     public void onlyDutyForOImportedChocolate3() {
         Product product = input3.get(BOX_OF_IMPORTED_CHOCOLATES);
         TaxCalculator tc = new TaxCalculator(product, taxFilter);
-        assertEquals(11.80, getPriceWithTax(product, tc), 0.01);
-        assertEquals(0.55, tc.getTax(), 0.01);
+        assertEquals(11.85, getPriceWithTax(product, tc), 0.01);
+        assertEquals(0.60, tc.getTax(), 0.01);
     }
 
     @Test
@@ -129,7 +129,7 @@ public class SalesTaxTest {
                 "Total: 65.15", new ReceiptPrinterDefault(new Receipt("Output 2:", input2)).print()
         );
     }
-    @Ignore
+
     @Test
     public void printReceipt3() {
         assertEquals("Output 3:\n" +

@@ -25,6 +25,6 @@ public class TaxCalculator {
         for(Tax tax: taxes) {
             amount += (product.getPrice() * tax.getTax());
         }
-        return Math.round(amount * 20.0)/20.0;
+        return Math.ceil(amount * 20.0)/20.0;
     }
 }
